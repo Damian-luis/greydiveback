@@ -22,7 +22,6 @@ module.exports={
         try{
             const data=await Person.get()
             const list=data.docs.map(e=>{return e.data()})
-            console.log(list)
             res.status(200).json({status:true,message:"Votos conseguidos exitosamente",list})
         }
         catch(e){
