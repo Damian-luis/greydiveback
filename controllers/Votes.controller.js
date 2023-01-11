@@ -17,5 +17,16 @@ module.exports={
             console.log(e)
             res.status(400).json({status:false,message:"No se ha podido submitir correctamente, contacte a su desarrollador a cargo :/"})
         }
+    },
+    getResults:async(req,res)=>{
+        try{
+            const data=await Person.get()
+            const list=data.docs.map(e=>{return e.data()})
+            console.log(list)
+            res.status(200).json({status:true,message:"Votos conseguidos exitosamente",list})
+        }
+        catch(e){
+            res.status(400).json({status:false,message:"No se ha podido acceder a esta información"})
+        }
     }
 } 
