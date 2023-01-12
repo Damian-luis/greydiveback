@@ -1,5 +1,6 @@
 const Person = require('../config/db.js')
 const { body, validationResult } = require('express-validator');
+const mailSender=require('../utils/index.js')
 module.exports={
     addVote:async(req,res)=>{
         const name=req.body.name
@@ -13,7 +14,9 @@ module.exports={
       return res.status(400).json({ status:false,message:"Por favor rellene todos los campos requeridos para enviar su voto" });
     }
  try{ 
-            await Person.add({
+    mailSender.sendMail(mail)
+    
+           await Person.add({
                 name,lastName,mail,birthDate,country,cb
             })
             res.status(200).json({status:true,message:"Su voto se ha submitido exitosamente"})
