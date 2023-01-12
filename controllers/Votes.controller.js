@@ -16,7 +16,7 @@ module.exports={
             await Person.add({
                 name,lastName,mail,birthDate,country,cb
             })
-            res.status(200).json({status:true,message:"Su informacion se ha subido correctamente"})
+            res.status(200).json({status:true,message:"Su voto se ha submitido exitosamente"})
         }
         catch(e){
             console.log(e)
